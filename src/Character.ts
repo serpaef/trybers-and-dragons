@@ -53,7 +53,10 @@ export default class Character implements Fighter {
   }
 
   get energy(): Energy {
-    return this._energy;
+    // this way I can return a new object with the properties of energy of this character.
+    // returning `this._energy` will return a pointer to the original object
+    // which allows changes in internal attributes
+    return { ...this._energy };
   }
 
   receiveDamage(attackPoints: number): number {
